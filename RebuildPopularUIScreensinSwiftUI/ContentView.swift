@@ -1,24 +1,29 @@
-//
-//  ContentView.swift
-//  RebuildPopularUIScreensinSwiftUI
-//
-//  Created by Dr. Shrikant Maraskolhe on 02/04/24.
-//
-
+import SwiftfulUI
+import SwiftfulRouting
 import SwiftUI
 
 struct ContentView: View {
+    
+    @Environment(\.router)  var router
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        List {
+            Button("Open Spotify") {
+                router.showScreen(.fullScreenCover) {
+                    _ in
+                    SpotifyHomeView()
+                }
+            }
         }
-        .padding()
+        
     }
+    
+    
 }
 
 #Preview {
-    ContentView()
+    RouterView {
+        _ in
+        ContentView()
+    }
 }
